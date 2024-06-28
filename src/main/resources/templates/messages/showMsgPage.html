@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>列出訊息</title>
+</head>
+<body>
+<div th:replace="~{layout/navbar}"></div>
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-6">
+
+				<h1>列出訊息</h1>
+			
+			
+				<div class="card">
+					<div class="card-header">列出訊息:</div>
+					<th:block th:each="oneMsg : ${allmes3}">
+					<div class="card-body">  
+						<p th:text=" ${oneMsg.text}"></p>
+
+					</div>
+					</th:block>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

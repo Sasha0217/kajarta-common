@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>新增訊息</title>
+</head>
+<body>
+	<div th:replace="~{layout/navbar}"></div>
+
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-6">
+
+				<h1>新增訊息</h1>
+				<div class="card">
+					<div class="card-header">請輸入訊息</div>
+					<div class="card-body">
+					    <form method="post" th:action="@{/messages/addPost}" >
+						    <textarea name="text" class="form-control"></textarea>
+						   <br> <input type="submit" class="btn btn-primary" value="送出"/>
+						</form>
+					</div>
+				</div>
+
+				<br>
+				<!-- th:if="${latestMsg} != null，如果不為空值，則顯示，空值則不顯示  -->
+				<div class="card" th:if="${latestMsg} != null">
+					<div class="card-header" th:text="  '最新訊息時間' +  ${latestMsg.added}"> </div>
+					<div class="card-body">
+						<p th:text=" ${latestMsg.text}"></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+</html>
