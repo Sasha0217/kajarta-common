@@ -10,9 +10,10 @@ import java.time.Instant;
 @Getter
 @Setter
 @Entity
-@Table(name = "leave_list", schema = "dbo")
-public class LeaveList {
+@Table(name = "leave")
+public class Leave {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 
@@ -29,16 +30,14 @@ public class LeaveList {
     private Short leaveType;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "leave_member_id", nullable = false)
-    private EmployeeAccount leaveMember;
+    @JoinColumn(name = "employee_id", nullable = false)
+    private Employee employee;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "deputy_id")
-    private EmployeeAccount deputy;
+    @Column(name = "deputy_id")
+    private Integer deputyId;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "team_leader_id", nullable = false)
-    private EmployeeAccount teamLeader;
+    @Column(name = "team_leader_id", nullable = false)
+    private Integer teamLeaderId;
 
     @Nationalized
     @Column(name = "permision_remarks", length = 50)
@@ -54,7 +53,7 @@ public class LeaveList {
     @Column(name = "reason", nullable = false, length = 50)
     private String reason;
 
-    @Column(name = "actual_leave_hours", nullable = false)
+    @Column(name = "actual_leave_hours")
     private Integer actualLeaveHours;
 
     @Column(name = "image")

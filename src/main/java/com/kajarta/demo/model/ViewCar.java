@@ -11,9 +11,10 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@Table(name = "view_car", schema = "dbo")
+@Table(name = "view_car")
 public class ViewCar {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 
@@ -22,7 +23,7 @@ public class ViewCar {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "car_id", nullable = false)
-    private CarList car;
+    private Car car;
 
     @Column(name = "sales_score", nullable = false)
     private Integer salesScore;
@@ -40,12 +41,8 @@ public class ViewCar {
     private Short deal;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "member_id", nullable = false)
-    private CustomerAccount member;
-
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "view_car_assigned_id", nullable = false)
-    private ViewCarAssigned viewCarAssigned;
+    @JoinColumn(name = "customer_id", nullable = false)
+    private Customer customer;
 
     @Column(name = "create_time", nullable = false)
     private Instant createTime;

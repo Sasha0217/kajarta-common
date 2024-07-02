@@ -10,23 +10,23 @@ import java.time.Instant;
 @Getter
 @Setter
 @Entity
-@Table(name = "car_adjust", schema = "dbo")
+@Table(name = "car_adjust")
 public class CarAdjust {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "team_leader_id", nullable = false)
-    private EmployeeAccount teamLeader;
+    @Column(name = "team_leader_id", nullable = false)
+    private Integer teamLeaderId;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "sales_id", nullable = false)
-    private EmployeeAccount sales;
+    @JoinColumn(name = "employee_id", nullable = false)
+    private Employee employee;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "car_id", nullable = false)
-    private CarList car;
+    private Car car;
 
     @Column(name = "approval_status", columnDefinition = "tinyint not null")
     private Short approvalStatus;

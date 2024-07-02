@@ -13,9 +13,10 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@Table(name = "car_list", schema = "dbo")
-public class CarList {
+@Table(name = "car")
+public class Car {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 
@@ -26,20 +27,12 @@ public class CarList {
     private Integer milage;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "list_pic_id", nullable = false)
-    private ImageList listPic;
+    @JoinColumn(name = "customer_id", nullable = false)
+    private Customer customer;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "pic_id", nullable = false)
-    private ImageList pic;
-
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "member_id", nullable = false)
-    private CustomerAccount member;
-
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "sales_id", nullable = false)
-    private EmployeeAccount sales;
+    @JoinColumn(name = "employee_id", nullable = false)
+    private Employee employee;
 
     @Column(name = "negotiable", columnDefinition = "tinyint")
     private Short negotiable;
@@ -60,8 +53,8 @@ public class CarList {
     private Instant launchDate;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "model_id", nullable = false)
-    private CarinfoList model;
+    @JoinColumn(name = "carinfo_id", nullable = false)
+    private Carinfo carinfo;
 
     @Nationalized
     @Column(name = "color", nullable = false, length = 20)
@@ -80,10 +73,10 @@ public class CarList {
     private Set<CarAdjust> carAdjusts = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "car")
-    private Set<ImageList> imageLists = new LinkedHashSet<>();
+    private Set<Image> images = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "car")
-    private Set<LikeList> likeLists = new LinkedHashSet<>();
+    private Set<Like> likes = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "car")
     private Set<Notice> notices = new LinkedHashSet<>();

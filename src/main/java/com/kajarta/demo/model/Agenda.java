@@ -10,7 +10,7 @@ import java.time.Instant;
 @Getter
 @Setter
 @Entity
-@Table(name = "agenda", schema = "dbo")
+@Table(name = "agenda")
 public class Agenda {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,8 +18,8 @@ public class Agenda {
     private Integer id;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "member_id", nullable = false)
-    private EmployeeAccount member;
+    @JoinColumn(name = "employee_id", nullable = false)
+    private Employee employee;
 
     @Nationalized
     @Column(name = "business_purpose", nullable = false, length = 50)

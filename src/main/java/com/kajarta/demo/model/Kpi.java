@@ -10,9 +10,10 @@ import java.time.Instant;
 @Getter
 @Setter
 @Entity
-@Table(name = "kpi_list", schema = "dbo")
-public class KpiList {
+@Table(name = "kpi")
+public class Kpi {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 
@@ -29,8 +30,8 @@ public class KpiList {
     private Integer salesScore;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "member_id", nullable = false)
-    private EmployeeAccount member;
+    @JoinColumn(name = "employee_id", nullable = false)
+    private Employee employee;
 
     @Column(name = "create_time", nullable = false)
     private Instant createTime;

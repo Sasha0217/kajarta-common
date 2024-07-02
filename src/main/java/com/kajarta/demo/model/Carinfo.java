@@ -11,9 +11,10 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@Table(name = "carinfo_list", schema = "dbo")
-public class CarinfoList {
+@Table(name = "carinfo")
+public class Carinfo {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 
@@ -56,7 +57,10 @@ public class CarinfoList {
     @Column(name = "update_time", nullable = false)
     private Instant updateTime;
 
-    @OneToMany(mappedBy = "model")
-    private Set<CarList> carLists = new LinkedHashSet<>();
+    @OneToMany(mappedBy = "carinfo")
+    private Set<Car> cars = new LinkedHashSet<>();
+
+    @OneToMany(mappedBy = "carinfo")
+    private Set<Preference> preferences = new LinkedHashSet<>();
 
 }

@@ -9,9 +9,10 @@ import java.time.Instant;
 @Getter
 @Setter
 @Entity
-@Table(name = "notice", schema = "dbo")
+@Table(name = "notice")
 public class Notice {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 
@@ -46,10 +47,10 @@ public class Notice {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "car_id")
-    private CarList car;
+    private Car car;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "preference_list_id")
-    private PreferenceList preferenceList;
+    @JoinColumn(name = "preference_id")
+    private Preference preference;
 
 }

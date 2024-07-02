@@ -12,9 +12,10 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@Table(name = "customer_account", schema = "dbo")
-public class CustomerAccount {
+@Table(name = "customer")
+public class Customer {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 
@@ -66,13 +67,16 @@ public class CustomerAccount {
     @Column(name = "id_number", nullable = false, length = 20)
     private String idNumber;
 
-    @OneToMany(mappedBy = "member")
-    private Set<CarList> carLists = new LinkedHashSet<>();
+    @OneToMany(mappedBy = "customer")
+    private Set<Car> cars = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "member")
-    private Set<LikeList> likeLists = new LinkedHashSet<>();
+    @OneToMany(mappedBy = "customer")
+    private Set<Like> likes = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "member")
+    @OneToMany(mappedBy = "customer")
+    private Set<Preference> preferences = new LinkedHashSet<>();
+
+    @OneToMany(mappedBy = "customer")
     private Set<ViewCar> viewCars = new LinkedHashSet<>();
 
 }

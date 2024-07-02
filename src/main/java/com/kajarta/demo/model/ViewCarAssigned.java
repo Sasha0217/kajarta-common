@@ -11,19 +11,19 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@Table(name = "view_car_assigned", schema = "dbo")
+@Table(name = "view_car_assigned")
 public class ViewCarAssigned {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "team_leader_id", nullable = false)
-    private EmployeeAccount teamLeader;
+    @Column(name = "team_leader_id", nullable = false)
+    private Integer teamLeaderId;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "sales_id", nullable = false)
-    private EmployeeAccount sales;
+    @JoinColumn(name = "employee_id", nullable = false)
+    private Employee employee;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "view_car_id", nullable = false)
@@ -40,8 +40,5 @@ public class ViewCarAssigned {
 
     @OneToMany(mappedBy = "viewCarAssigned")
     private Set<Notice> notices = new LinkedHashSet<>();
-
-    @OneToMany(mappedBy = "viewCarAssigned")
-    private Set<ViewCar> viewCars = new LinkedHashSet<>();
 
 }

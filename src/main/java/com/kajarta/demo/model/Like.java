@@ -9,19 +9,20 @@ import java.time.Instant;
 @Getter
 @Setter
 @Entity
-@Table(name = "like_list", schema = "dbo")
-public class LikeList {
+@Table(name = "\"like\"")
+public class Like {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "car_id", nullable = false)
-    private CarList car;
+    private Car car;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "member_id", nullable = false)
-    private CustomerAccount member;
+    @JoinColumn(name = "customer_id", nullable = false)
+    private Customer customer;
 
     @Column(name = "create_time", nullable = false)
     private Instant createTime;

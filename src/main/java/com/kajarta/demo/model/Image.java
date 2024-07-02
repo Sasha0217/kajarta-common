@@ -9,9 +9,10 @@ import java.time.Instant;
 @Getter
 @Setter
 @Entity
-@Table(name = "image_list", schema = "dbo")
-public class ImageList {
+@Table(name = "image")
+public class Image {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 
@@ -20,12 +21,18 @@ public class ImageList {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "car_id", nullable = false)
-    private CarList car;
+    private Car car;
 
     @Column(name = "create_time", nullable = false)
     private Instant createTime;
 
     @Column(name = "update_time", nullable = false)
     private Instant updateTime;
+
+    @Column(name = "list_pic_id", columnDefinition = "tinyint not null")
+    private Short listPicId;
+
+    @Column(name = "is_main_pic", columnDefinition = "tinyint not null")
+    private Short isMainPic;
 
 }

@@ -13,9 +13,10 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@Table(name = "preference_list", schema = "dbo")
-public class PreferenceList {
+@Table(name = "preference")
+public class Preference {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 
@@ -23,23 +24,25 @@ public class PreferenceList {
     @Column(name = "select_name", nullable = false, length = 20)
     private String selectName;
 
-    @Column(name = "production_year", nullable = false)
+    @Column(name = "production_year")
     private Integer productionYear;
 
-    @Column(name = "price", nullable = false, precision = 18)
+    @Column(name = "price", precision = 18)
     private BigDecimal price;
 
-    @Column(name = "milage", nullable = false)
+    @Column(name = "milage")
     private Integer milage;
 
-    @Column(name = "score", nullable = false)
+    @Column(name = "score")
     private Integer score;
 
-    @Column(name = "member_id", nullable = false)
-    private Integer memberId;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "customer_id", nullable = false)
+    private Customer customer;
 
-    @Column(name = "model_id")
-    private Integer modelId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "carinfo_id")
+    private Carinfo carinfo;
 
     @Column(name = "brand", columnDefinition = "tinyint")
     private Short brand;
@@ -80,7 +83,7 @@ public class PreferenceList {
     @Column(name = "preferences_lists", columnDefinition = "tinyint not null")
     private Short preferencesLists;
 
-    @OneToMany(mappedBy = "preferenceList")
+    @OneToMany(mappedBy = "preference")
     private Set<Notice> notices = new LinkedHashSet<>();
 
 }

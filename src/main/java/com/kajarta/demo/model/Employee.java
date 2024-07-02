@@ -7,13 +7,16 @@ import org.hibernate.annotations.Nationalized;
 
 import java.time.Instant;
 import java.time.LocalDate;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "employee_account", schema = "dbo")
-public class EmployeeAccount {
+@Table(name = "employee")
+public class Employee {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 
@@ -81,14 +84,35 @@ public class EmployeeAccount {
     @Column(name = "official_leave_hours")
     private Integer officialLeaveHours;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "team_leader_id", nullable = false)
-    private EmployeeAccount teamLeader;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "team_leader_id")
+    private Employee teamLeader;
 
     @Column(name = "branch", columnDefinition = "tinyint not null")
     private Short branch;
 
     @Column(name = "end_date")
     private LocalDate endDate;
+
+    @OneToMany(mappedBy = "employee")
+    private Set<Agenda> agenda = new LinkedHashSet<>();
+
+    @OneToMany(mappedBy = "employee")
+    private Set<Car> cars = new LinkedHashSet<>();
+
+    @OneToMany(mappedBy = "employee")
+    private Set<CarAdjust> carAdjusts = new LinkedHashSet<>();
+
+    @OneToMany(mappedBy = "teamLeader")
+    private Set<Employee> employees = new LinkedHashSet<>();
+
+    @OneToMany(mappedBy = "employee")
+    private Set<Kpi> kpis = new LinkedHashSet<>();
+
+    @OneToMany(mappedBy = "employee")
+    private Set<Leave> leaves = new LinkedHashSet<>();
+
+    @OneToMany(mappedBy = "employee")
+    private Set<ViewCarAssigned> viewCarAssigneds = new LinkedHashSet<>();
 
 }
