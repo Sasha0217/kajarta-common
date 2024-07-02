@@ -1,0 +1,21 @@
+CREATE TABLE leave_list (
+    id INT IDENTITY(1,1) PRIMARY KEY,
+    leave_status TINYINT NOT NULL,
+    start_time DATETIME,
+    end_time DATETIME,
+    leave_type TINYINT NOT NULL,
+    leave_member_id INT NOT NULL,
+    deputy_id INT,
+    team_leader_id INT NOT NULL,
+    permision_remarks NVARCHAR(50),
+    permision_status TINYINT,
+    audit_time DATETIME,
+    reason NVARCHAR(50) NOT NULL,
+    actual_leave_hours INT NOT NULL,
+    image VARBINARY(MAX),
+    special_leave_hours INT,
+    create_time DATETIME NOT NULL,
+    update_time DATETIME NOT NULL,
+    validity_period_start DATETIME,
+    validity_period_end DATETIME
+);
