@@ -24,7 +24,7 @@ public enum BranchEnum {
         this.branchName = branchName;
     }
 
-    // 寫別的ENUM可以照抄這裡，這裡代表跑迴圈去比對到哪一個code，則會return整筆資料
+    // 寫別的ENUM可以照抄這裡，這裡代表跑迴圈去比對到哪一個code，則會return清單中的對應資料
     public static BranchEnum getByCode(Integer code) {
         if (code != null) {
             for (BranchEnum branchEnum : values()) {
