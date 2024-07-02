@@ -1,7 +1,42 @@
 package com.kajarta.demo.model;
 
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
+import java.math.BigDecimal;
+import java.time.Instant;
+
+@Getter
+@Setter
 @Entity
+@Table(name = "kpi")
 public class Kpi {
-  }
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    private Integer id;
+
+    @Column(name = "season_str_day", nullable = false)
+    private Instant seasonStrDay;
+
+    @Column(name = "team_leader_rating")
+    private Integer teamLeaderRating;
+
+    @Column(name = "total_score", precision = 5, scale = 1)
+    private BigDecimal totalScore;
+
+    @Column(name = "sales_score")
+    private Integer salesScore;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "employee_id", nullable = false)
+    private Employee employee;
+
+    @Column(name = "create_time", nullable = false)
+    private Instant createTime;
+
+    @Column(name = "update_time", nullable = false)
+    private Instant updateTime;
+
+}
