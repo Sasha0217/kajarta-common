@@ -21,8 +21,8 @@ public class Carinfo {
     @Column(name = "brand", columnDefinition = "tinyint not null")
     private Short brand;
 
-    @Column(name = "model_name", columnDefinition = "tinyint not null")
-    private Short modelName;
+    @Column(name = "model_name", nullable = false, length = 20)
+    private String modelName;
 
     @Column(name = "model", columnDefinition = "tinyint not null")
     private Short model;

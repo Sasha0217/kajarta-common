@@ -12,7 +12,7 @@ public enum SuspensionEnum {
     JEEP(5, "吉普車"),
     HATCHBACK(6, "掀背車");
 
-    private final int code;
+    private final Integer code;
     private final String type;
 
     SuspensionEnum(int code, String type) {

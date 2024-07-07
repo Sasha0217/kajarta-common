@@ -29,10 +29,10 @@ public class Image {
     @Column(name = "update_time", nullable = false)
     private Instant updateTime;
 
-    @Column(name = "list_pic_id", columnDefinition = "tinyint not null")
-    private Short listPicId;
-
     @Column(name = "is_main_pic", columnDefinition = "tinyint not null")
     private Short isMainPic;
+
+    @Column(name = "is_list_pic", columnDefinition = "tinyint not null")
+    private Short isListPic;
 
 }
