@@ -10,9 +10,9 @@ import lombok.Getter;
 生理假
 婚假 / 喪假 / 產假 / 陪產假 - 主管給假
 公假-主管給假
- */
+*/
 @Getter
-public enum LeaveTypeEnums {
+public enum LeaveTypeEnum {
     // 員工年資四年內
     ANNUAL_HALF_YEAR(1, "特休", 24),
     ANNUAL_ONE_YEAR(2, "特休", 56),
@@ -31,17 +31,17 @@ public enum LeaveTypeEnums {
     private final String leaveType;
     private final int hoursPolicy;
 
-    LeaveTypeEnums(int code, String leaveType, int hoursPolicy) {
+    LeaveTypeEnum(int code, String leaveType, int hoursPolicy) {
         this.code = code;
         this.leaveType = leaveType;
         this.hoursPolicy = hoursPolicy;
     }
 
-    public static LeaveTypeEnums getByCode(Integer code) {
+    public static LeaveTypeEnum getByCode(Integer code) {
         if (code != null) {
-            for (LeaveTypeEnums leaveTypeEnums : values()) {
-                if (leaveTypeEnums.getCode() == code) {
-                    return leaveTypeEnums;
+            for (LeaveTypeEnum leaveTypeEnum : values()) {
+                if (leaveTypeEnum.getCode() == code) {
+                    return leaveTypeEnum;
                 }
             }
         }
