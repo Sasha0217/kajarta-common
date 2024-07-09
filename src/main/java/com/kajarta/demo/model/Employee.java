@@ -7,21 +7,22 @@ import org.hibernate.annotations.Nationalized;
 
 import java.time.Instant;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "employee")
+@Table(name = "employee", schema = "dbo")
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Column(name = "account_type", columnDefinition = "tinyint not null")
-    private Short accountType;
+    @Column(name = "account_type", nullable = false)
+    private Integer accountType;
 
     @Column(name = "account", nullable = false, length = 20)
     private String account;
@@ -43,10 +44,10 @@ public class Employee {
     private String email;
 
     @Column(name = "create_time", nullable = false)
-    private Instant createTime;
+    private Date createTime;
 
     @Column(name = "update_time", nullable = false)
-    private Instant updateTime;
+    private Date updateTime;
 
     @Column(name = "picture")
     private byte[] picture;
@@ -72,12 +73,6 @@ public class Employee {
     @Column(name = "marriage_leave_hours")
     private Integer marriageLeaveHours;
 
-    @Column(name = "maternal_leave_hours")
-    private Integer maternalLeaveHours;
-
-    @Column(name = "paternity_leave_hours")
-    private Integer paternityLeaveHours;
-
     @Column(name = "menstrual_leave_hours")
     private Integer menstrualLeaveHours;
 
@@ -88,8 +83,8 @@ public class Employee {
     @JoinColumn(name = "team_leader_id")
     private Employee teamLeader;
 
-    @Column(name = "branch", columnDefinition = "tinyint not null")
-    private Short branch;
+    @Column(name = "branch", nullable = false)
+    private Integer branch;
 
     @Column(name = "end_date")
     private LocalDate endDate;
@@ -114,5 +109,21 @@ public class Employee {
 
     @OneToMany(mappedBy = "employee")
     private Set<ViewCarAssigned> viewCarAssigneds = new LinkedHashSet<>();
+
+    @PrePersist
+    public void onCreate() {
+        if (createTime == null) {
+            createTime = new Date();
+        }
+        if (updateTime == null) {
+            updateTime = new Date();
+        }
+    }
+
+    @PreUpdate
+    public void onUpdate() {
+        updateTime = new Date();
+    }
+
 
 }

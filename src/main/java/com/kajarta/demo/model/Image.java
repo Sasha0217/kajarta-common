@@ -5,11 +5,12 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.Instant;
+import java.util.Date;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "image")
+@Table(name = "image", schema = "dbo")
 public class Image {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,15 +25,30 @@ public class Image {
     private Car car;
 
     @Column(name = "create_time", nullable = false)
-    private Instant createTime;
+    private Date createTime;
 
     @Column(name = "update_time", nullable = false)
-    private Instant updateTime;
+    private Date updateTime;
 
-    @Column(name = "list_pic_id", columnDefinition = "tinyint not null")
-    private Short listPicId;
+    @Column(name = "is_list_pic", nullable = false)
+    private Integer isListPic;
 
-    @Column(name = "is_main_pic", columnDefinition = "tinyint not null")
-    private Short isMainPic;
+    @Column(name = "is_main_pic", nullable = false)
+    private Integer isMainPic;
+
+    @PrePersist
+    public void onCreate() {
+        if (createTime == null) {
+            createTime = new Date();
+        }
+        if (updateTime == null) {
+            updateTime = new Date();
+        }
+    }
+
+    @PreUpdate
+    public void onUpdate() {
+        updateTime = new Date();
+    }
 
 }
