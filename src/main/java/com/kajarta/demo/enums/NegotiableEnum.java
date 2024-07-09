@@ -3,7 +3,7 @@ package com.kajarta.demo.enums;
 import lombok.Getter;
 
 @Getter
-public enum Negotiable {
+public enum NegotiableEnum {
     FIVE(1, "5%"),
     TEN(2, "10%"),
     FIFTEEN(3, "15%"),
@@ -12,16 +12,16 @@ public enum Negotiable {
     private final Integer code;
     private final String percent;
 
-    Negotiable(Integer code, String percent) {
+    NegotiableEnum(Integer code, String percent) {
         this.code = code;
         this.percent = percent;
     }
 
-    public static RearWheelEnum getByCode(Integer code) {
+    public static NegotiableEnum getByCode(Integer code) {
         if (code != null) {
-            for (RearWheelEnum rearWheelEnum : RearWheelEnum.values()) {
-                if (rearWheelEnum.getCode() == code) {
-                    return rearWheelEnum;
+            for (NegotiableEnum negotiableEnum : NegotiableEnum.values()) {
+                if (negotiableEnum.getCode() == code) {
+                    return negotiableEnum;
                 }
             }
         }
@@ -30,6 +30,6 @@ public enum Negotiable {
 
     @Override
     public String toString() {
-        return code + "|" + wheel;
+        return code + "|" + percent;
     }
 }
