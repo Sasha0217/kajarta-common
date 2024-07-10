@@ -46,7 +46,7 @@ public class Preference {
     private Carinfo carinfo;
 
     @Column(name = "brand", columnDefinition = "tinyint")
-    private int brand;
+    private Integer brand;
 
     @Column(name = "suspension")
     private Integer suspension;
