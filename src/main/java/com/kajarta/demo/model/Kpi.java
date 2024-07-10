@@ -6,11 +6,12 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.Instant;
+import java.util.Date;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "kpi")
+@Table(name = "kpi", schema = "dbo")
 public class Kpi {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,7 +19,7 @@ public class Kpi {
     private Integer id;
 
     @Column(name = "season_str_day", nullable = false)
-    private Instant seasonStrDay;
+    private Date seasonStrDay;
 
     @Column(name = "team_leader_rating")
     private Integer teamLeaderRating;
@@ -34,9 +35,25 @@ public class Kpi {
     private Employee employee;
 
     @Column(name = "create_time", nullable = false)
-    private Instant createTime;
+    private Date createTime;
 
     @Column(name = "update_time", nullable = false)
-    private Instant updateTime;
+    private Date updateTime;
+
+    @PrePersist
+    public void onCreate() {
+        if (createTime == null) {
+            createTime = new Date();
+        }
+        if (updateTime == null) {
+            updateTime = new Date();
+        }
+    }
+
+    @PreUpdate
+    public void onUpdate() {
+        updateTime = new Date();
+    }
+
 
 }

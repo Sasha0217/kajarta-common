@@ -6,11 +6,12 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.Instant;
+import java.util.Date;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "car_adjust")
+@Table(name = "car_adjust", schema = "dbo")
 public class CarAdjust {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,19 +29,34 @@ public class CarAdjust {
     @JoinColumn(name = "car_id", nullable = false)
     private Car car;
 
-    @Column(name = "approval_status", columnDefinition = "tinyint not null")
-    private Short approvalStatus;
+    @Column(name = "approval_status", nullable = false)
+    private Integer approvalStatus;
 
-    @Column(name = "approval_type", columnDefinition = "tinyint not null")
-    private Short approvalType;
+    @Column(name = "approval_type", nullable = false)
+    private Integer approvalType;
 
     @Column(name = "floating_amount", precision = 18)
     private BigDecimal floatingAmount;
 
     @Column(name = "create_time", nullable = false)
-    private Instant createTime;
+    private Date createTime;
 
     @Column(name = "update_time", nullable = false)
-    private Instant updateTime;
+    private Date updateTime;
+
+    @PrePersist
+    public void onCreate() {
+        if (createTime == null) {
+            createTime = new Date();
+        }
+        if (updateTime == null) {
+            updateTime = new Date();
+        }
+    }
+
+    @PreUpdate
+    public void onUpdate() {
+        updateTime = new Date();
+    }
 
 }
