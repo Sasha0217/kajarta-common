@@ -4,10 +4,11 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.Instant;
 import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Set;
+
+import com.kajarta.demo.vo.CustomerVO;
 
 @Getter
 @Setter
@@ -33,7 +34,7 @@ public class ViewCar {
     private Integer factoryScore;
 
     @Column(name = "view_car_date", nullable = false)
-    private Instant viewCarDate;
+    private Date viewCarDate;
 
     @Column(name = "car_score", nullable = false)
     private Integer carScore;
