@@ -7,13 +7,14 @@ import org.hibernate.annotations.Nationalized;
 
 import java.math.BigDecimal;
 import java.time.Instant;
+import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "car")
+@Table(name = "car", schema = "dbo")
 public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,23 +35,23 @@ public class Car {
     @JoinColumn(name = "employee_id", nullable = false)
     private Employee employee;
 
-    @Column(name = "negotiable", columnDefinition = "tinyint")
-    private Short negotiable;
+    @Column(name = "negotiable")
+    private Integer negotiable;
 
     @Column(name = "condition_score", nullable = false)
     private Integer conditionScore;
 
-    @Column(name = "branch", columnDefinition = "tinyint not null")
-    private Short branch;
+    @Column(name = "branch", nullable = false)
+    private Integer branch;
 
-    @Column(name = "state", columnDefinition = "tinyint not null")
-    private Short state;
+    @Column(name = "state", nullable = false)
+    private Integer state;
 
     @Column(name = "price", nullable = false, precision = 18)
     private BigDecimal price;
 
     @Column(name = "launch_date", nullable = false)
-    private Instant launchDate;
+    private Date launchDate;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "carinfo_id", nullable = false)
@@ -60,14 +61,14 @@ public class Car {
     @Column(name = "color", nullable = false, length = 20)
     private String color;
 
-    @Column(name = "remark", columnDefinition = "tinyint not null")
-    private Short remark;
+    @Column(name = "remark", nullable = false)
+    private Integer remark;
 
     @Column(name = "create_time", nullable = false)
-    private Instant createTime;
+    private Date createTime;
 
     @Column(name = "update_time", nullable = false)
-    private Instant updateTime;
+    private Date updateTime;
 
     @OneToMany(mappedBy = "car")
     private Set<CarAdjust> carAdjusts = new LinkedHashSet<>();
@@ -83,5 +84,20 @@ public class Car {
 
     @OneToMany(mappedBy = "car")
     private Set<ViewCar> viewCars = new LinkedHashSet<>();
+
+    @PrePersist
+    public void onCreate() {
+        if (createTime == null) {
+            createTime = new Date();
+        }
+        if (updateTime == null) {
+            updateTime = new Date();
+        }
+    }
+
+    @PreUpdate
+    public void onUpdate() {
+        updateTime = new Date();
+    }
 
 }

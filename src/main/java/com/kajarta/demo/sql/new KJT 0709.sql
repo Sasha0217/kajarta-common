@@ -1,4 +1,7 @@
-
+USE master ;  
+GO  
+DROP DATABASE kajarta;  
+GO 
 
 USE master;
 GO
@@ -9,6 +12,7 @@ USE master ;
 USE [kajarta]
 GO
 
+/****** Object:  Table [dbo].[agenda]    Script Date: 2024/7/2 下午 05:08:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -19,7 +23,7 @@ CREATE TABLE [dbo].[agenda](
 	[business_purpose] [nvarchar](50) NOT NULL,
 	[unavailable_time_str] [datetime] NOT NULL,
 	[unavailable_time_end] [datetime] NOT NULL,
-	[unavailable_status] [tinyint] NOT NULL,
+	[unavailable_status] [int] NOT NULL,
 	[create_time] [datetime] NOT NULL,
 	[update_time] [datetime] NOT NULL,
  CONSTRAINT [PK_agenda] PRIMARY KEY CLUSTERED 
@@ -39,15 +43,15 @@ CREATE TABLE [dbo].[car](
 	[milage] [int] NOT NULL,
 	[customer_id] [int] NOT NULL,
 	[employee_id] [int] NOT NULL,
-	[negotiable] [tinyint] NULL,
+	[negotiable] [int] NULL,
 	[condition_score] [int] NOT NULL,
-	[branch] [tinyint] NOT NULL,
-	[state] [tinyint] NOT NULL,
+	[branch] [int] NOT NULL,
+	[state] [int] NOT NULL,
 	[price] [decimal](18, 0) NOT NULL,
 	[launch_date] [datetime] NOT NULL,
 	[carinfo_id] [int] NOT NULL,
 	[color] [nvarchar](20) NOT NULL,
-	[remark] [tinyint] NOT NULL,
+	[remark] [int] NOT NULL,
 	[create_time] [datetime] NOT NULL,
 	[update_time] [datetime] NOT NULL,
  CONSTRAINT [PK_car_list] PRIMARY KEY CLUSTERED 
@@ -66,8 +70,8 @@ CREATE TABLE [dbo].[car_adjust](
 	[team_leader_id] [int] NOT NULL,
 	[employee_id] [int] NOT NULL,
 	[car_id] [int] NOT NULL,
-	[approval_status] [tinyint] NOT NULL,
-	[approval_type] [tinyint] NOT NULL,
+	[approval_status] [int] NOT NULL,
+	[approval_type] [int] NOT NULL,
 	[floating_amount] [decimal](18, 0) NULL,
 	[create_time] [datetime] NOT NULL,
 	[update_time] [datetime] NOT NULL,
@@ -84,15 +88,15 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[carinfo](
 	[id] [int] IDENTITY(1,1) NOT NULL,
-	[brand] [tinyint] NOT NULL,
-	[model_name] [tinyint] NOT NULL,
-	[model] [tinyint] NOT NULL,
-	[door] [tinyint] NOT NULL,
-	[passenger] [tinyint] NOT NULL,
-	[rear_wheel] [tinyint] NOT NULL,
-	[gasoline] [tinyint] NOT NULL,
-	[transmission] [tinyint] NOT NULL,
-	[cc] [tinyint] NOT NULL,
+	[brand] [int] NOT NULL,
+	[model_name] [varchar](20) NOT NULL,
+	[model] [int] NOT NULL,
+	[door] [int] NOT NULL,
+	[passenger] [int] NOT NULL,
+	[rear_wheel] [int] NOT NULL,
+	[gasoline] [int] NOT NULL,
+	[transmission] [int] NOT NULL,
+	[cc] [int] NOT NULL,
 	[hp] [int] NOT NULL,
 	[torque] [float] NOT NULL,
 	[create_time] [datetime] NOT NULL,
@@ -110,7 +114,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[customer](
 	[id] [int] IDENTITY(1,1) NOT NULL,
-	[account_type] [tinyint] NOT NULL,
+	[account_type] [int] NOT NULL,
 	[account] [varchar](20) NOT NULL,
 	[password] [varchar](20) NOT NULL,
 	[name] [nvarchar](20) NOT NULL,
@@ -121,7 +125,7 @@ CREATE TABLE [dbo].[customer](
 	[update_time] [datetime] NOT NULL,
 	[picture] [varbinary](max) NULL,
 	[sex] [char](1) NOT NULL,
-	[city] [tinyint] NOT NULL,
+	[city] [int] NOT NULL,
 	[remarks] [nvarchar](50) NULL,
 	[address] [nvarchar](50) NOT NULL,
 	[id_number] [varchar](20) NOT NULL,
@@ -138,7 +142,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[employee](
 	[id] [int] IDENTITY(1,1) NOT NULL,
-	[account_type] [tinyint] NOT NULL,
+	[account_type] [int] NOT NULL,
 	[account] [varchar](20) NOT NULL,
 	[password] [varchar](20) NOT NULL,
 	[name] [nvarchar](20) NOT NULL,
@@ -155,12 +159,10 @@ CREATE TABLE [dbo].[employee](
 	[annual_leave_hours] [int] NULL,
 	[bereavement_leave_hours] [int] NULL,
 	[marriage_leave_hours] [int] NULL,
-	[maternal_leave_hours] [int] NULL,
-	[paternity_leave_hours] [int] NULL,
 	[menstrual_leave_hours] [int] NULL,
 	[official_leave_hours] [int] NULL,
 	[team_leader_id] [int] NULL,
-	[branch] [tinyint] NOT NULL,
+	[branch] [int] NOT NULL,
 	[end_date] [date] NULL,
 PRIMARY KEY CLUSTERED 
 (
@@ -179,8 +181,8 @@ CREATE TABLE [dbo].[image](
 	[car_id] [int] NOT NULL,
 	[create_time] [datetime] NOT NULL,
 	[update_time] [datetime] NOT NULL,
-	[list_pic_id] [tinyint] NOT NULL,
-	[is_main_pic] [tinyint] NOT NULL,
+	[is_list_pic] [int] NOT NULL,
+	[is_main_pic] [int] NOT NULL,
 PRIMARY KEY CLUSTERED 
 (
 	[id] ASC
@@ -214,15 +216,15 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[leave](
 	[id] [int] IDENTITY(1,1) NOT NULL,
-	[leave_status] [tinyint] NOT NULL,
+	[leave_status] [int] NOT NULL,
 	[start_time] [datetime] NULL,
 	[end_time] [datetime] NULL,
-	[leave_type] [tinyint] NOT NULL,
+	[leave_type] [int] NOT NULL,
 	[employee_id] [int] NOT NULL,
 	[deputy_id] [int] NULL,
 	[team_leader_id] [int] NOT NULL,
 	[permision_remarks] [nvarchar](50) NULL,
-	[permision_status] [tinyint] NULL,
+	[permision_status] [int] NULL,
 	[audit_time] [datetime] NULL,
 	[reason] [nvarchar](50) NOT NULL,
 	[actual_leave_hours] [int] NULL,
@@ -262,13 +264,13 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[notice](
 	[id] [int] IDENTITY(1,1) NOT NULL,
-	[category] [tinyint] NOT NULL,
+	[category] [int] NOT NULL,
 	[create_time] [datetime] NOT NULL,
 	[update_time] [datetime] NOT NULL,
 	[viewable_notification] [tinyint] NOT NULL,
-	[read_status] [tinyint] NOT NULL,
+	[read_status] [int] NOT NULL,
 	[receiver] [int] NULL,
-	[account_type] [tinyint] NOT NULL,
+	[account_type] [int] NOT NULL,
 	[view_car_id] [int] NULL,
 	[view_car_assigned_id] [int] NULL,
 	[car_id] [int] NULL,
@@ -294,18 +296,18 @@ CREATE TABLE [dbo].[preference](
 	[customer_id] [int] NOT NULL,
 	[carinfo_id] [int] NULL,
 	[brand] [tinyint] NULL,
-	[suspension] [tinyint] NULL,
-	[door] [tinyint] NULL,
-	[passenger] [tinyint] NULL,
-	[rear_wheel] [tinyint] NULL,
-	[gasoline] [tinyint] NULL,
-	[transmission] [tinyint] NULL,
-	[cc] [tinyint] NULL,
+	[suspension] [int] NULL,
+	[door] [int] NULL,
+	[passenger] [int] NULL,
+	[rear_wheel] [int] NULL,
+	[gasoline] [int] NULL,
+	[transmission] [int] NULL,
+	[cc] [int] NULL,
 	[hp] [int] NULL,
 	[torque] [float] NULL,
 	[create_time] [datetime] NOT NULL,
 	[update_time] [datetime] NOT NULL,
-	[preferences_lists] [tinyint] NOT NULL,
+	[preferences_lists] [int] NOT NULL,
 PRIMARY KEY CLUSTERED 
 (
 	[id] ASC
@@ -319,17 +321,17 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[view_car](
 	[id] [int] IDENTITY(1,1) NOT NULL,
-	[view_time_section] [tinyint] NOT NULL,
+	[view_time_section] [int] NOT NULL,
 	[car_id] [int] NOT NULL,
 	[sales_score] [int] NOT NULL,
 	[factory_score] [int] NOT NULL,
 	[view_car_date] [datetime] NOT NULL,
 	[car_score] [int] NOT NULL,
-	[deal] [tinyint] NOT NULL,
+	[deal] [int] NOT NULL,
 	[customer_id] [int] NOT NULL,
 	[create_time] [datetime] NOT NULL,
 	[update_time] [datetime] NOT NULL,
-	[view_car_status] [tinyint] NOT NULL,
+	[view_car_status] [int] NOT NULL,
  CONSTRAINT [PK_view_car] PRIMARY KEY CLUSTERED 
 (
 	[id] ASC
@@ -346,7 +348,7 @@ CREATE TABLE [dbo].[view_car_assigned](
 	[team_leader_id] [int] NOT NULL,
 	[employee_id] [int] NOT NULL,
 	[view_car_id] [int] NOT NULL,
-	[assigned_status] [tinyint] NOT NULL,
+	[assigned_status] [int] NOT NULL,
 	[create_time] [datetime] NOT NULL,
 	[update_time] [datetime] NOT NULL,
  CONSTRAINT [PK_view_car_assigned] PRIMARY KEY CLUSTERED 
@@ -355,6 +357,175 @@ CREATE TABLE [dbo].[view_car_assigned](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
+
+
+/****** Object:  Table [dbo].[brand]    Script Date: 2024/7/8 下午 06:34:25 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[brand](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Brand] [nvarchar](50) NULL,
+	[code] [int] NULL,
+	[trademark] [nvarchar](50) NULL,
+ CONSTRAINT [PK_brand] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+/****** Object:  Table [dbo].[rearwheel]    Script Date: 2024/7/8 下午 06:34:50 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[rearwheel](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[RearWheel] [nvarchar](50) NULL,
+	[code] [int] NULL,
+	[wheel] [nvarchar](50) NULL,
+ CONSTRAINT [PK_rearwheel] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+
+/****** Object:  Table [dbo].[suspension]    Script Date: 2024/7/8 下午 06:35:01 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[suspension](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Suspension] [nvarchar](50) NULL,
+	[code] [int] NULL,
+	[type] [nvarchar](50) NULL,
+ CONSTRAINT [PK_suspension] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+
+/****** Object:  Table [dbo].[door]    Script Date: 2024/7/8 下午 06:31:28 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[door](
+ [Id] [int] IDENTITY(1,1) NOT NULL,
+ [Door] [nvarchar](50) NOT NULL,
+ [code] [int] NOT NULL,
+ [cardoor] [nvarchar](50) NOT NULL,
+ CONSTRAINT [PK_door] PRIMARY KEY CLUSTERED 
+(
+ [Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+
+
+/****** Object:  Table [dbo].[displacement]    Script Date: 2024/7/8 下午 06:44:26 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[displacement](
+ [Id] [int] IDENTITY(1,1) NOT NULL,
+ [Displacement] [nvarchar](50) NOT NULL,
+ [code] [int] NOT NULL,
+ [cc] [nvarchar](50) NOT NULL,
+ CONSTRAINT [PK_displacement] PRIMARY KEY CLUSTERED 
+(
+ [Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+
+/****** Object:  Table [dbo].[passenger]    Script Date: 2024/7/8 下午 06:36:04 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[passenger](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Passenger] [nchar](20) NULL,
+	[code] [int] NULL,
+	[seat] [nchar](20) NULL,
+ CONSTRAINT [PK_Table_1] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+
+/****** Object:  Table [dbo].[gasoline]    Script Date: 2024/7/8 下午 06:42:13 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[gasoline](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Gasoline] [nchar](20) NULL,
+	[code] [int] NULL,
+	[gaso] [nchar](20) NULL,
+ CONSTRAINT [PK_Gasoline] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+/****** Object:  Table [dbo].[transmission]    Script Date: 2024/7/9 下午 01:27:13 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[transmission](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Transmission] [nchar](20) NULL,
+	[code] [int] NULL,
+	[trans] [nchar](20) NULL,
+ CONSTRAINT [PK_transmission] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+
 ALTER TABLE [dbo].[agenda]  WITH CHECK ADD  CONSTRAINT [fk_agenda_employee] FOREIGN KEY([employee_id])
 REFERENCES [dbo].[employee] ([id])
 GO
