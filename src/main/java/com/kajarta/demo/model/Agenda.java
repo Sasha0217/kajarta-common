@@ -6,11 +6,13 @@ import lombok.Setter;
 import org.hibernate.annotations.Nationalized;
 
 import java.time.Instant;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "agenda")
+@Table(name = "agenda", schema = "dbo")
 public class Agenda {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,18 +28,33 @@ public class Agenda {
     private String businessPurpose;
 
     @Column(name = "unavailable_time_str", nullable = false)
-    private Instant unavailableTimeStr;
+    private Date unavailableTimeStr;
 
     @Column(name = "unavailable_time_end", nullable = false)
-    private Instant unavailableTimeEnd;
+    private Date unavailableTimeEnd;
 
-    @Column(name = "unavailable_status", columnDefinition = "tinyint not null")
-    private Short unavailableStatus;
+    @Column(name = "unavailable_status", nullable = false)
+    private Integer unavailableStatus;
 
     @Column(name = "create_time", nullable = false)
-    private Instant createTime;
+    private Date createTime;
 
     @Column(name = "update_time", nullable = false)
-    private Instant updateTime;
+    private Date updateTime;
 
+    @PrePersist
+    public void onCreate() {
+        if (createTime == null) {
+            createTime = new Date();
+        }
+        if (updateTime == null) {
+            updateTime = new Date();
+        }
+    }
+
+    @PreUpdate
+    public void onUpdate() {
+        updateTime = new Date();
+    }
 }
+

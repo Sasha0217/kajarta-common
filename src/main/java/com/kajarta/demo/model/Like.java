@@ -5,11 +5,12 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.Instant;
+import java.util.Date;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "\"like\"")
+@Table(name = "\"like\"", schema = "dbo")
 public class Like {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,9 +26,25 @@ public class Like {
     private Customer customer;
 
     @Column(name = "create_time", nullable = false)
-    private Instant createTime;
+    private Date createTime;
 
     @Column(name = "update_time", nullable = false)
-    private Instant updateTime;
+    private Date updateTime;
+
+    @PrePersist
+    public void onCreate() {
+        if (createTime == null) {
+            createTime = new Date();
+        }
+        if (updateTime == null) {
+            updateTime = new Date();
+        }
+    }
+
+    @PreUpdate
+    public void onUpdate() {
+        updateTime = new Date();
+    }
+
 
 }

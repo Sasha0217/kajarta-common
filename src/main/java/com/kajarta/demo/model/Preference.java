@@ -7,13 +7,14 @@ import org.hibernate.annotations.Nationalized;
 
 import java.math.BigDecimal;
 import java.time.Instant;
+import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "preference")
+@Table(name = "preference", schema = "dbo")
 public class Preference {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,28 +46,28 @@ public class Preference {
     private Carinfo carinfo;
 
     @Column(name = "brand", columnDefinition = "tinyint")
-    private Short brand;
+    private Integer brand;
 
-    @Column(name = "suspension", columnDefinition = "tinyint")
-    private Short suspension;
+    @Column(name = "suspension")
+    private Integer suspension;
 
-    @Column(name = "door", columnDefinition = "tinyint")
-    private Short door;
+    @Column(name = "door")
+    private Integer door;
 
-    @Column(name = "passenger", columnDefinition = "tinyint")
-    private Short passenger;
+    @Column(name = "passenger")
+    private Integer passenger;
 
-    @Column(name = "rear_wheel", columnDefinition = "tinyint")
-    private Short rearWheel;
+    @Column(name = "rear_wheel")
+    private Integer rearWheel;
 
-    @Column(name = "gasoline", columnDefinition = "tinyint")
-    private Short gasoline;
+    @Column(name = "gasoline")
+    private Integer gasoline;
 
-    @Column(name = "transmission", columnDefinition = "tinyint")
-    private Short transmission;
+    @Column(name = "transmission")
+    private Integer transmission;
 
-    @Column(name = "cc", columnDefinition = "tinyint")
-    private Short cc;
+    @Column(name = "cc")
+    private Integer cc;
 
     @Column(name = "hp")
     private Integer hp;
@@ -75,15 +76,31 @@ public class Preference {
     private Double torque;
 
     @Column(name = "create_time", nullable = false)
-    private Instant createTime;
+    private Date createTime;
 
     @Column(name = "update_time", nullable = false)
-    private Instant updateTime;
+    private Date updateTime;
 
-    @Column(name = "preferences_lists", columnDefinition = "tinyint not null")
-    private Short preferencesLists;
+    @Column(name = "preferences_lists", nullable = false)
+    private Integer preferencesLists;
 
     @OneToMany(mappedBy = "preference")
     private Set<Notice> notices = new LinkedHashSet<>();
+
+    @PrePersist
+    public void onCreate() {
+        if (createTime == null) {
+            createTime = new Date();
+        }
+        if (updateTime == null) {
+            updateTime = new Date();
+        }
+    }
+
+    @PreUpdate
+    public void onUpdate() {
+        updateTime = new Date();
+    }
+
 
 }

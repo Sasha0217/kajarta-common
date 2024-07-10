@@ -6,19 +6,20 @@ import lombok.Setter;
 import org.hibernate.annotations.Nationalized;
 
 import java.time.Instant;
+import java.util.Date;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "leave")
+@Table(name = "leave", schema = "dbo")
 public class Leave {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Column(name = "leave_status", columnDefinition = "tinyint not null")
-    private Short leaveStatus;
+    @Column(name = "leave_status", nullable = false)
+    private Integer leaveStatus;
 
     @Column(name = "start_time")
     private Instant startTime;
@@ -26,8 +27,8 @@ public class Leave {
     @Column(name = "end_time")
     private Instant endTime;
 
-    @Column(name = "leave_type", columnDefinition = "tinyint not null")
-    private Short leaveType;
+    @Column(name = "leave_type", nullable = false)
+    private Integer leaveType;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "employee_id", nullable = false)
@@ -43,11 +44,11 @@ public class Leave {
     @Column(name = "permision_remarks", length = 50)
     private String permisionRemarks;
 
-    @Column(name = "permision_status", columnDefinition = "tinyint")
-    private Short permisionStatus;
+    @Column(name = "permision_status")
+    private Integer permisionStatus;
 
     @Column(name = "audit_time")
-    private Instant auditTime;
+    private Date auditTime;
 
     @Nationalized
     @Column(name = "reason", nullable = false, length = 50)
@@ -63,15 +64,31 @@ public class Leave {
     private Integer specialLeaveHours;
 
     @Column(name = "create_time", nullable = false)
-    private Instant createTime;
+    private Date createTime;
 
     @Column(name = "update_time", nullable = false)
-    private Instant updateTime;
+    private Date updateTime;
 
     @Column(name = "validity_period_start")
-    private Instant validityPeriodStart;
+    private Date validityPeriodStart;
 
     @Column(name = "validity_period_end")
-    private Instant validityPeriodEnd;
+    private Date validityPeriodEnd;
+
+    @PrePersist
+    public void onCreate() {
+        if (createTime == null) {
+            createTime = new Date();
+        }
+        if (updateTime == null) {
+            updateTime = new Date();
+        }
+    }
+
+    @PreUpdate
+    public void onUpdate() {
+        updateTime = new Date();
+    }
+
 
 }
