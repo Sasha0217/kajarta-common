@@ -8,8 +8,6 @@ import lombok.Setter;
 
 import java.util.Date;
 
-import com.kajarta.demo.model.Employee;
-
 @Getter
 @Setter
 @NoArgsConstructor
@@ -18,7 +16,7 @@ public class AgendaVO {
     private Integer id;
 
     @Schema(description = "排程員工")
-    private Employee employee;
+    private String employeeName;
 
     @Schema(description = "事由")
     private String businessPurpose;

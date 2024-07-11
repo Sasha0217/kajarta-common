@@ -9,8 +9,6 @@ import lombok.Setter;
 import java.math.BigDecimal;
 import java.util.Date;
 
-import com.kajarta.demo.model.Employee;
-
 @Getter
 @Setter
 @NoArgsConstructor
@@ -32,7 +30,10 @@ public class KpiVO {
     private Integer salesScore;
 
     @Schema(description = "員工")
-    private Employee employee;
+    private String employeeName;
+
+    @Schema(description = "員工主管")
+    private String teamLeaderName;
 
     @Schema(description = "創建時間")
     private Date createTime;

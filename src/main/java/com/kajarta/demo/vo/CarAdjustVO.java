@@ -9,9 +9,6 @@ import lombok.Setter;
 import java.math.BigDecimal;
 import java.util.Date;
 
-import com.kajarta.demo.model.Car;
-import com.kajarta.demo.model.Employee;
-
 @Getter
 @Setter
 @NoArgsConstructor
@@ -20,20 +17,20 @@ public class CarAdjustVO {
 
     private Integer id;
 
-    @Schema(description = "主管ID")
-    private Integer teamLeaderId;
+    @Schema(description = "主管")
+    private String teamLeaderName;
 
     @Schema(description = "建立修改員工")
-    private Integer employeeId;
+    private String employeeName;
 
-    @Schema(description = "修改車輛")
+    @Schema(description = "修改車輛ID")
     private Integer carId;
 
     @Schema(description = "簽核狀態")
-    private Integer approvalStatus;
+    private String approvalStatusName;
 
     @Schema(description = "簽核種類")
-    private Integer approvalType;
+    private String approvalTypeName;
 
     @Schema(description = "最終異動金額")
     private BigDecimal floatingAmount;
