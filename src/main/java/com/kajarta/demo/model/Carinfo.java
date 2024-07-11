@@ -1,12 +1,20 @@
 package com.kajarta.demo.model;
 
-import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-
 import java.time.Instant;
 import java.util.LinkedHashSet;
 import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
 @Getter
 @Setter
@@ -58,9 +66,11 @@ public class Carinfo {
     private Instant updateTime;
 
     @OneToMany(mappedBy = "carinfo")
+    @JsonIgnore
     private Set<Car> cars = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "carinfo")
+    @JsonIgnore
     private Set<Preference> preferences = new LinkedHashSet<>();
 
 }
