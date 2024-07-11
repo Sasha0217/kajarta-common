@@ -77,8 +77,9 @@ public class Employee {
     @Column(name = "official_leave_hours")
     private Integer officialLeaveHours;
 
-    @Column(name = "team_leader_id")
-    private Integer teamLeader;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "team_leader_id")
+    private Employee teamLeader;
 
     @Column(name = "branch", nullable = false)
     private Integer branch;
