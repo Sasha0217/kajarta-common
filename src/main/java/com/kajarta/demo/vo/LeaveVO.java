@@ -24,54 +24,51 @@ public class LeaveVO {
     @Schema(description = "開始時段")
     private Instant startTime;
 
-    @Column(name = "end_time")
+    @Schema(description = "結束時段")
     private Instant endTime;
 
-    @Column(name = "leave_type", nullable = false)
+    @Schema(description = "假種")
     private Integer leaveType;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "employee_id", nullable = false)
+    @Schema(description = "休假員工")
     private Employee employee;
 
-    @Column(name = "deputy_id")
+    @Schema(description = "代理員工")
     private Integer deputyId;
 
-    @Column(name = "team_leader_id", nullable = false)
+    @Schema(description = "核可主管")
     private Integer teamLeaderId;
 
-    @Nationalized
-    @Column(name = "permision_remarks", length = 50)
+    @Schema(description = "主管審核備註")
     private String permisionRemarks;
 
-    @Column(name = "permision_status")
+    @Schema(description = "核可狀態")
     private Integer permisionStatus;
 
-    @Column(name = "audit_time")
+    @Schema(description = "核可時間")
     private Date auditTime;
 
-    @Nationalized
-    @Column(name = "reason", nullable = false, length = 50)
+    @Schema(description = "請假事由")
     private String reason;
 
-    @Column(name = "actual_leave_hours")
+    @Schema(description = "實際請假時數")
     private Integer actualLeaveHours;
 
-    @Column(name = "image")
+    @Schema(description = "請假證明圖檔")
     private byte[] image;
 
-    @Column(name = "special_leave_hours")
+    @Schema(description = "特殊假時數")
     private Integer specialLeaveHours;
 
-    @Column(name = "create_time", nullable = false)
+    @Schema(description = "建立時間")
     private Date createTime;
 
-    @Column(name = "update_time", nullable = false)
+    @Schema(description = "更新時間")
     private Date updateTime;
 
-    @Column(name = "validity_period_start")
+    @Schema(description = "開始使用期限")
     private Date validityPeriodStart;
 
-    @Column(name = "validity_period_end")
+    @Schema(description = "截止使用期限")
     private Date validityPeriodEnd;
 }
