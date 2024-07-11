@@ -15,7 +15,7 @@ public enum BrandEnum {
     NISSAN(8, "日產"),
     SUBARU(9, "速霸陸");
 
-    private final int code;
+    private final Integer code;
     private final String trademark;
 
     BrandEnum(int code, String trademark) {

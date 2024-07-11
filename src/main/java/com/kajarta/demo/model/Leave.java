@@ -22,10 +22,10 @@ public class Leave {
     private Integer leaveStatus;
 
     @Column(name = "start_time")
-    private Instant startTime;
+    private Date startTime;
 
     @Column(name = "end_time")
-    private Instant endTime;
+    private Date endTime;
 
     @Column(name = "leave_type", nullable = false)
     private Integer leaveType;
