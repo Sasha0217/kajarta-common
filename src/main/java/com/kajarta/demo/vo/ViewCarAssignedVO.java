@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.util.Date;
-import com.kajarta.demo.model.ViewCar;
 
 @Getter
 @Setter
@@ -16,17 +15,17 @@ public class ViewCarAssignedVO {
 
     private Integer id;
 
-    @Schema(description = "主管ID")
-    private Integer teamLeaderId;
+    @Schema(description = "主管")
+    private String teamLeaderName;
 
     @Schema(description = "建立修改員工")
     private String employeeName;
 
     @Schema(description = "賞車編號")
-    private ViewCar viewCar;
+    private Integer viewCarId;
 
     @Schema(description = "指派狀態")
-    private Integer assignedStatus;
+    private String assignedStatusName;
 
     @Schema(description = "創建時間")
     private Date createTime;
