@@ -4,8 +4,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Nationalized;
-
-import java.time.Instant;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.LinkedHashSet;
@@ -79,9 +77,8 @@ public class Employee {
     @Column(name = "official_leave_hours")
     private Integer officialLeaveHours;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "team_leader_id")
-    private Employee teamLeader;
+    @Column(name = "team_leader_id")
+    private Integer teamLeader;
 
     @Column(name = "branch", nullable = false)
     private Integer branch;
