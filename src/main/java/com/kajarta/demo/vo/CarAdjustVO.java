@@ -24,10 +24,10 @@ public class CarAdjustVO {
     private Integer teamLeaderId;
 
     @Schema(description = "建立修改員工")
-    private Employee employee;
+    private Integer employeeId;
 
     @Schema(description = "修改車輛")
-    private Car car;
+    private Integer carId;
 
     @Schema(description = "簽核狀態")
     private Integer approvalStatus;
