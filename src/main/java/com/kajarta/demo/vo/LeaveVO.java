@@ -22,16 +22,16 @@ public class LeaveVO {
     private Integer leaveStatus;
 
     @Schema(description = "開始時段")
-    private Instant startTime;
+    private Date startTime;
 
     @Schema(description = "結束時段")
-    private Instant endTime;
+    private Date endTime;
 
     @Schema(description = "假種")
     private Integer leaveType;
 
     @Schema(description = "休假員工")
-    private Employee employee;
+    private Integer employeeId;
 
     @Schema(description = "代理員工")
     private Integer deputyId;
