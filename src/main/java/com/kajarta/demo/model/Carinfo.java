@@ -8,6 +8,8 @@ import java.time.Instant;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Getter
 @Setter
 @Entity
@@ -57,9 +59,11 @@ public class Carinfo {
     @Column(name = "update_time", nullable = false)
     private Instant updateTime;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "carinfo")
     private Set<Car> cars = new LinkedHashSet<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "carinfo")
     private Set<Preference> preferences = new LinkedHashSet<>();
 
