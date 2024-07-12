@@ -27,7 +27,10 @@ public class AgendaVO {
     @Schema(description = "排程結束時間")
     private Date unavailableTimeEnd;
 
-    @Schema(description = "排程分類")
+    @Schema(description = "排程分類名稱")
+    private String unavailableStatusName;
+
+    @Schema(description = "排程分類編號")
     private Integer unavailableStatus;
 
     @Schema(description = "創建時間")
