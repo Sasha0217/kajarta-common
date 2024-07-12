@@ -1,6 +1,8 @@
 package com.kajarta.demo.vo;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
