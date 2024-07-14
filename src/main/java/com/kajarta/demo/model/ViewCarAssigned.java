@@ -3,8 +3,6 @@ package com.kajarta.demo.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.time.Instant;
 import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -56,6 +54,5 @@ public class ViewCarAssigned {
     public void onUpdate() {
         updateTime = new Date();
     }
-
 
 }
