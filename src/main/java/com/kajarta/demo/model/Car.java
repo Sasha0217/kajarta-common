@@ -7,10 +7,6 @@ import java.util.Set;
 
 import org.hibernate.annotations.Nationalized;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -44,12 +40,10 @@ public class Car {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "customer_id", nullable = false)
-    @JsonIgnore
     private Customer customer;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "employee_id", nullable = false)
-    @JsonIgnore
     private Employee employee;
 
     @Column(name = "negotiable")
@@ -72,7 +66,6 @@ public class Car {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "carinfo_id", nullable = false)
-    @JsonIgnore
     private Carinfo carinfo;
 
     @Nationalized
@@ -89,23 +82,18 @@ public class Car {
     private Date updateTime;
 
     @OneToMany(mappedBy = "car")
-    @JsonIgnore
     private Set<CarAdjust> carAdjusts = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "car")
-    @JsonIgnore
     private Set<Image> images = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "car")
-    @JsonIgnore
     private Set<Like> likes = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "car")
-    @JsonIgnore
     private Set<Notice> notices = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "car")
-    @JsonIgnore
     private Set<ViewCar> viewCars = new LinkedHashSet<>();
 
     @PrePersist

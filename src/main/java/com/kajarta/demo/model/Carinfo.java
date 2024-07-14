@@ -66,11 +66,9 @@ public class Carinfo {
     private Instant updateTime;
 
     @OneToMany(mappedBy = "carinfo")
-    @JsonIgnore
     private Set<Car> cars = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "carinfo")
-    @JsonIgnore
     private Set<Preference> preferences = new LinkedHashSet<>();
 
 }
