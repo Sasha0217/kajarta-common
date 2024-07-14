@@ -22,8 +22,11 @@ public class EmployeeVO {
 
     private Integer id;
 
-    @Schema(description = "帳號分類")
+    @Schema(description = "帳號分類狀態")
     private Integer accountType;
+
+    @Schema(description = "帳號分類名稱")
+    private String accountTypeName;
 
     @Schema(description = "帳號")
     private String account;
@@ -82,8 +85,17 @@ public class EmployeeVO {
     @Schema(description = "直屬主管")
     private EmployeeVO teamLeader;
 
-    @Schema(description = "分店")
+    @Schema(description = "分店id")
     private Integer branch;
+
+    @Schema(description = "分店所在城市")
+    private String branchCity;
+
+    @Schema(description = "分店地址")
+    private String branchAddress;
+
+    @Schema(description = "分店名稱")
+    private String branchName;
 
     @Schema(description = "離職日")
     private LocalDate endDate;
