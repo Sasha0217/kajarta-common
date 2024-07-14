@@ -123,6 +123,4 @@ public class Employee {
         updateTime = new Date();
     }
 
-
-
 }
