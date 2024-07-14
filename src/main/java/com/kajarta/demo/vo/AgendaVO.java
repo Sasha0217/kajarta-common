@@ -15,6 +15,9 @@ import java.util.Date;
 public class AgendaVO {
     private Integer id;
 
+    @Schema(description = "排程員工ID")
+    private Integer employeeId;
+
     @Schema(description = "排程員工")
     private String employeeName;
 
