@@ -26,8 +26,8 @@ public class Carinfo {
     @Column(name = "model_name", nullable = false, length = 20)
     private String modelName;
 
-    @Column(name = "model", nullable = false)
-    private Integer model;
+    @Column(name = "suspension", nullable = false)
+    private Integer suspension;
 
     @Column(name = "door", nullable = false)
     private Integer door;
