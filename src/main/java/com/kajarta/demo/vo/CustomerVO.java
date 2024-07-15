@@ -40,10 +40,10 @@ public class CustomerVO {
     private String email;
 
     @Schema(description = "創建時間")
-    private Date createTime;
+    private String createTime;
 
     @Schema(description = "更新時間")
-    private Date updateTime;
+    private String updateTime;
 
     @Schema(description = "照片")
     private byte[] picture;

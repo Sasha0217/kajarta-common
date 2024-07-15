@@ -123,24 +123,6 @@ public class Employee {
         updateTime = new Date();
     }
 
-    private String createTimeString;
-    private String updateTimeString;
-
-    public String getCreateTimeString() {
-        return createTimeString;
-    }
-
-    public void setCreateTimeString(String createTimeString) {
-        this.createTimeString = createTimeString;
-    }
-
-    public String getUpdateTimeString() {
-        return updateTimeString;
-    }
-
-    public void setUpdateTimeString(String updateTimeString) {
-        this.updateTimeString = updateTimeString;
-    }
 
 
 }
