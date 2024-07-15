@@ -63,4 +63,5 @@ public class CustomerVO {
     @Schema(description = "身分證")
     private String idNumber;
 
+
 }
