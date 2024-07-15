@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import java.util.Date;
 
 @Getter
 @Setter
@@ -27,9 +26,9 @@ public class ViewCarAssignedVO {
     @Schema(description = "指派狀態")
     private String assignedStatusName;
 
-    @Schema(description = "創建時間")
-    private Date createTime;
+    @Schema(description = "創建時間String")
+    private String createTimeString;
 
-    @Schema(description = "更新時間")
-    private Date updateTime;
+    @Schema(description = "更新時間String")
+    private String updateTimeString;
 }

@@ -6,8 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
-
 @Getter
 @Setter
 @NoArgsConstructor
@@ -24,11 +22,11 @@ public class AgendaVO {
     @Schema(description = "事由")
     private String businessPurpose;
 
-    @Schema(description = "排程開始時間")
-    private Date unavailableTimeStr;
+    @Schema(description = "排程開始時間String")
+    private String unavailableTimeStrString;
 
-    @Schema(description = "排程結束時間")
-    private Date unavailableTimeEnd;
+    @Schema(description = "排程結束時間String")
+    private String unavailableTimeEndString;
 
     @Schema(description = "排程分類名稱")
     private String unavailableStatusName;
@@ -36,10 +34,10 @@ public class AgendaVO {
     @Schema(description = "排程分類編號")
     private Integer unavailableStatus;
 
-    @Schema(description = "創建時間")
-    private Date createTime;
+    @Schema(description = "創建時間String")
+    private String createTimeString;
 
-    @Schema(description = "更新時間")
-    private Date updateTime;
+    @Schema(description = "更新時間String")
+    private String updateTimeString;
 
 }

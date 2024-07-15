@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
-import java.util.Date;
 
 @Getter
 @Setter
@@ -35,10 +34,10 @@ public class CarAdjustVO {
     @Schema(description = "最終異動金額")
     private BigDecimal floatingAmount;
 
-    @Schema(description = "創建時間")
-    private Date createTime;
+    @Schema(description = "創建時間String")
+    private String createTimeString;
 
-    @Schema(description = "更新時間")
-    private Date updateTime;
+    @Schema(description = "更新時間String")
+    private String updateTimeString;
 
 }
