@@ -3,7 +3,7 @@ package com.kajarta.demo.enums;
 import lombok.Getter;
 
 @Getter
-public enum ViewTimeSection {
+public enum ViewTimeSectionEnum {
 
     MORNING_SESSION(1, "10:00:00-12:00:00"),
     AFTERNOON_SESSION_1(2, "13:00:00-15:00:00"),
@@ -13,14 +13,14 @@ public enum ViewTimeSection {
     private final int code;
     private final String timeRange;
 
-    ViewTimeSection(int code, String timeRange) {
+    ViewTimeSectionEnum(int code, String timeRange) {
         this.code = code;
         this.timeRange = timeRange;
     }
 
-    public static ViewTimeSection getByCode(Integer code) {
+    public static ViewTimeSectionEnum getByCode(Integer code) {
         if (code != null) {
-            for (ViewTimeSection section : values()) {
+            for (ViewTimeSectionEnum section : values()) {
                 if (section.getCode() == code) {
                     return section;
                 }
