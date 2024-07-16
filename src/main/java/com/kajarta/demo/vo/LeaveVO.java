@@ -22,10 +22,10 @@ public class LeaveVO {
     private Integer leaveStatus;
 
     @Schema(description = "開始時段")
-    private Date startTime;
+    private String startTime;
 
     @Schema(description = "結束時段")
-    private Date endTime;
+    private String endTime;
 
     @Schema(description = "假種")
     private Integer leaveType;
@@ -46,7 +46,7 @@ public class LeaveVO {
     private Integer permisionStatus;
 
     @Schema(description = "核可時間")
-    private Date auditTime;
+    private String auditTime;
 
     @Schema(description = "請假事由")
     private String reason;
@@ -61,14 +61,14 @@ public class LeaveVO {
     private Integer specialLeaveHours;
 
     @Schema(description = "建立時間")
-    private Date createTime;
+    private String createTime;
 
     @Schema(description = "更新時間")
-    private Date updateTime;
+    private String updateTime;
 
     @Schema(description = "開始使用期限")
-    private Date validityPeriodStart;
+    private String validityPeriodStart;
 
     @Schema(description = "截止使用期限")
-    private Date validityPeriodEnd;
+    private String validityPeriodEnd;
 }

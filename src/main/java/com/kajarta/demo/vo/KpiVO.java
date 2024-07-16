@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
-import java.util.Date;
 
 @Getter
 @Setter
@@ -17,8 +16,8 @@ public class KpiVO {
 
     private Integer id;
 
-    @Schema(description = "季度開始日")
-    private Date seasonStrDay;
+    @Schema(description = "季度開始日String")
+    private String seasonStrDayString;
 
     @Schema(description = "主管評分")
     private Integer teamLeaderRating;
@@ -35,9 +34,9 @@ public class KpiVO {
     @Schema(description = "員工主管")
     private String teamLeaderName;
 
-    @Schema(description = "創建時間")
-    private Date createTime;
+    @Schema(description = "創建時間String")
+    private String createTimeString;
 
-    @Schema(description = "更新時間")
-    private Date updateTime;
+    @Schema(description = "更新時間String")
+    private String updateTimeString;
 }

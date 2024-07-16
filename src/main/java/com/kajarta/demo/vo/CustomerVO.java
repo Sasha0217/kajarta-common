@@ -1,6 +1,8 @@
 package com.kajarta.demo.vo;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -38,10 +40,10 @@ public class CustomerVO {
     private String email;
 
     @Schema(description = "創建時間")
-    private Date createTime;
+    private String createTime;
 
     @Schema(description = "更新時間")
-    private Date updateTime;
+    private String updateTime;
 
     @Schema(description = "照片")
     private byte[] picture;
@@ -60,5 +62,6 @@ public class CustomerVO {
 
     @Schema(description = "身分證")
     private String idNumber;
+
 
 }
