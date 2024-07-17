@@ -36,6 +36,9 @@ public class LeaveVO {
     @Schema(description = "代理員工")
     private Integer deputyId;
 
+    @Schema(description = "代理員工name")
+    private String deputyName;
+
     @Schema(description = "核可主管")
     private Integer teamLeaderId;
 
