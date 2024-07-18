@@ -102,5 +102,4 @@ public class Preference {
         updateTime = new Date();
     }
 
-
 }
