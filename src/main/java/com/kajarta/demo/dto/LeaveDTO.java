@@ -28,5 +28,5 @@ public class LeaveDTO {
     private Date validityPeriodStart;
     private Date validityPeriodEnd;
     private String deputyName; // 如果需要在DTO中包含这个字段的话
-
+    private String employeeName;
 }

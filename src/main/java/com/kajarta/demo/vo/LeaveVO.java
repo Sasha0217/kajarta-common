@@ -1,21 +1,22 @@
 package com.kajarta.demo.vo;
 
-import com.kajarta.demo.model.Employee;
+
+import com.kajarta.demo.page.Pages;
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.persistence.*;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.Nationalized;
 
-import java.time.Instant;
-import java.util.Date;
+
+import java.io.Serializable;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class LeaveVO {
+public class LeaveVO extends Pages implements Serializable {
     private Integer id;
 
     @Schema(description = "請假或給假")
@@ -30,13 +31,19 @@ public class LeaveVO {
     @Schema(description = "假種")
     private Integer leaveType;
 
+    @Schema(description = "假種名稱")
+    private String leaveTypeName;
+
     @Schema(description = "休假員工")
     private Integer employeeId;
+
+    @Schema(description = "休假員工姓名")
+    private String employeeName;
 
     @Schema(description = "代理員工")
     private Integer deputyId;
 
-    @Schema(description = "代理員工name")
+    @Schema(description = "代理員工姓名")
     private String deputyName;
 
     @Schema(description = "核可主管")
