@@ -77,7 +77,7 @@ public class Employee {
     @Column(name = "official_leave_hours")
     private Integer officialLeaveHours;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "team_leader_id")
     private Employee teamLeader;
 
@@ -122,7 +122,5 @@ public class Employee {
     public void onUpdate() {
         updateTime = new Date();
     }
-
-
 
 }
