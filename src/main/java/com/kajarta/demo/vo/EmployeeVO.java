@@ -86,7 +86,6 @@ public class EmployeeVO extends Pages implements Serializable {
     @Schema(description = "直屬主管")
     private String teamLeaderName;
 
-
     @Schema(description = "分店id")
     private Integer branch;
 
