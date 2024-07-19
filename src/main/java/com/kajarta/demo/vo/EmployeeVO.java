@@ -1,24 +1,22 @@
 package com.kajarta.demo.vo;
 
-import com.kajarta.demo.model.*;
+import com.kajarta.demo.page.Pages;
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.Nationalized;
 
+import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class EmployeeVO {
+public class EmployeeVO extends Pages implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private Integer id;
 
@@ -82,8 +80,12 @@ public class EmployeeVO {
     @Schema(description = "公假剩餘時數")
     private Integer officialLeaveHours;
 
+    @Schema(description = "直屬主管id")
+    private Integer teamLeaderId;
+
     @Schema(description = "直屬主管")
-    private EmployeeVO teamLeader;
+    private String teamLeaderName;
+
 
     @Schema(description = "分店id")
     private Integer branch;
