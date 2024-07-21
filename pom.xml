@@ -12,7 +12,7 @@
 
 	<groupId>com.kajarta</groupId>
 	<artifactId>kajarta-common</artifactId>
-	<version>0.0.2-SNAPSHOT</version>
+	<version>0.0.1-SNAPSHOT</version>
 	<name>kajarta-common</name>
 	<packaging>jar</packaging>
 	<description>Demo project for Spring Boot</description>
