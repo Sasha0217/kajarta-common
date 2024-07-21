@@ -16,7 +16,7 @@ public class Rearwheel {
     private Integer id;
 
     @Nationalized
-    @Column(name = "RearWheel", length = 50)
+    @Column(name = "rearwheel", length = 50)
     private String rearWheel;
 
     @Column(name = "code")
