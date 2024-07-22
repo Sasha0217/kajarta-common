@@ -21,6 +21,9 @@ public class CustomerVO {
     @Schema(description = "帳號分類")
     private Integer accountType;
 
+    @Schema(description = "帳號分類名稱")
+    private String accountTypeName;
+
     @Schema(description = "帳號")
     private String account;
 
