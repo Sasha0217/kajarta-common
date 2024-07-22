@@ -59,6 +59,9 @@ public class CustomerVO extends Pages implements Serializable {
     @Schema(description = "縣市")
     private Integer city;
 
+    @Schema(description = "縣市名稱")
+    private String cityName;
+
     @Schema(description = "備註")
     private String remarks;
 
