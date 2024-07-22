@@ -1,5 +1,6 @@
 package com.kajarta.demo.vo;
 
+import com.kajarta.demo.page.Pages;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
@@ -8,13 +9,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CustomerVO {
+public class CustomerVO extends Pages implements Serializable {
 
     private Integer id;
 
