@@ -1,0 +1,19 @@
+services:
+  redis:
+    container_name: redis7
+    image: 'redis:7.0.14-alpine3.18'
+    ports:
+      - '6379:6379'
+    volumes:
+      - $PWD/docker-data/redis:/data
+
+#  sql_server:
+#    container_name: sql_server
+#    image: mcr.microsoft.com/mssql/server
+#    environment:
+#      - ACCEPT_EULA=Y
+#      - SA_PASSWORD=@Kajarta2024
+#    ports:
+#      - '1433:1433'
+#    volumes:
+#      - sqlserver_data:/var/opt/mssql
