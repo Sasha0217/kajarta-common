@@ -25,6 +25,12 @@ public class CarAdjustVO {
     @Schema(description = "修改車輛ID")
     private Integer carId;
 
+    @Schema(description = "簽核狀態(編號)")
+    private Integer approvalStatus;
+
+    @Schema(description = "簽核種類(編號)")
+    private Integer approvalType;
+
     @Schema(description = "簽核狀態")
     private String approvalStatusName;
 
@@ -40,4 +46,20 @@ public class CarAdjustVO {
     @Schema(description = "更新時間String")
     private String updateTimeString;
 
+    // 0723新增
+
+    @Schema(description = "建立修改員工ID")
+    private Integer employeeId;
+
+    @Schema(description = "主管ID")
+    private Integer teamLeaderId;
+
+    @Schema(description = "修改車輛價格")
+    private BigDecimal carPrice;
+
+    @Schema(description = "修改車輛品牌")
+    private String carBrand;
+
+    @Schema(description = "修改車輛型號")
+    private String carModelName;
 }

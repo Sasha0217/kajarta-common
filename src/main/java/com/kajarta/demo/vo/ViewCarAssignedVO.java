@@ -20,11 +20,20 @@ public class ViewCarAssignedVO {
     @Schema(description = "建立修改員工")
     private String employeeName;
 
+    @Schema(description = "主管Id")
+    private Integer teamLeaderId;
+
+    @Schema(description = "建立修改員工Id")
+    private Integer employeeId;
+
     @Schema(description = "賞車編號")
     private Integer viewCarId;
 
     @Schema(description = "指派狀態")
     private String assignedStatusName;
+
+    @Schema(description = "指派狀態(編號)")
+    private Integer assignedStatus;
 
     @Schema(description = "創建時間String")
     private String createTimeString;
