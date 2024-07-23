@@ -34,6 +34,12 @@ public class KpiVO {
     @Schema(description = "員工主管")
     private String teamLeaderName;
 
+    @Schema(description = "員工ID")
+    private Integer employeeId;
+
+    @Schema(description = "員工主管ID")
+    private Integer teamLeaderId;
+
     @Schema(description = "創建時間String")
     private String createTimeString;
 
