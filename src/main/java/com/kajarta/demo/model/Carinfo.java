@@ -42,8 +42,8 @@ public class Carinfo {
     @Column(name = "passenger", nullable = false)
     private Integer passenger;
 
-    @Column(name = "rear_wheel", nullable = false)
-    private Integer rearWheel;
+    @Column(name = "rearwheel", nullable = false)
+    private Integer rearwheel;
 
     @Column(name = "gasoline", nullable = false)
     private Integer gasoline;
