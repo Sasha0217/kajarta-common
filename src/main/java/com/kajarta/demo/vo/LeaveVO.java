@@ -4,22 +4,20 @@ package com.kajarta.demo.vo;
 import com.kajarta.demo.page.Pages;
 import io.swagger.v3.oas.annotations.media.Schema;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 
 import java.io.Serializable;
 
 @Getter
 @Setter
-@NoArgsConstructor
+@Builder
 @AllArgsConstructor
+@NoArgsConstructor
 public class LeaveVO extends Pages implements Serializable {
     private Integer id;
 
-    @Schema(description = "請假或給假")
+    @Schema(description = "請假類型:0-請假 1-給假")
     private Integer leaveStatus;
 
     @Schema(description = "開始時段")
@@ -52,7 +50,7 @@ public class LeaveVO extends Pages implements Serializable {
     @Schema(description = "主管審核備註")
     private String permisionRemarks;
 
-    @Schema(description = "核可狀態")
+    @Schema(description = "核可狀態:1-簽核中 2-同意 3-拒絕")
     private Integer permisionStatus;
 
     @Schema(description = "核可時間")

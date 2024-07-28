@@ -1,5 +1,6 @@
 package com.kajarta.demo.model;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -56,24 +57,31 @@ public class Employee {
     @Column(name = "start_date", nullable = false)
     private LocalDate startDate;
 
+    @Schema(description = "病假剩餘時數")
     @Column(name = "sick_leave_hours")
     private Integer sickLeaveHours;
 
+    @Schema(description = "事假剩餘時數")
     @Column(name = "personal_leave_hours")
     private Integer personalLeaveHours;
 
+    @Schema(description = "特休剩餘時數")
     @Column(name = "annual_leave_hours")
     private Integer annualLeaveHours;
 
+    @Schema(description = "喪假剩餘時數")
     @Column(name = "bereavement_leave_hours")
     private Integer bereavementLeaveHours;
 
+    @Schema(description = "婚假剩餘時數")
     @Column(name = "marriage_leave_hours")
     private Integer marriageLeaveHours;
 
+    @Schema(description = "生理假剩餘時數")
     @Column(name = "menstrual_leave_hours")
     private Integer menstrualLeaveHours;
 
+    @Schema(description = "公假剩餘時數")
     @Column(name = "official_leave_hours")
     private Integer officialLeaveHours;
 
