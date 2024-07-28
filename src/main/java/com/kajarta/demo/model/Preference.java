@@ -22,7 +22,7 @@ public class Preference {
     private Integer id;
 
     @Nationalized
-    @Column(name = "select_name", nullable = false, length = 20)
+    @Column(name = "select_name", length = 20)
     private String selectName;
 
     @Column(name = "production_year")
