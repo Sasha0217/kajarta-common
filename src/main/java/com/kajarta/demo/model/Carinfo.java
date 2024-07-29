@@ -43,7 +43,7 @@ public class Carinfo {
     private Integer passenger;
 
     @Column(name = "rearwheel", nullable = false)
-    private Integer rearWheel;
+    private Integer rearwheel;
 
     @Column(name = "gasoline", nullable = false)
     private Integer gasoline;
