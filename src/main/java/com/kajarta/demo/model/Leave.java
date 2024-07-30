@@ -1,8 +1,8 @@
 package com.kajarta.demo.model;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.Nationalized;
 
 import java.time.Instant;
@@ -11,6 +11,9 @@ import java.util.Date;
 @Getter
 @Setter
 @Entity
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "leave", schema = "dbo")
 public class Leave {
     @Id
@@ -18,6 +21,7 @@ public class Leave {
     @Column(name = "id", nullable = false)
     private Integer id;
 
+    @Schema(description = "請假類型:0-請假 1-給假")
     @Column(name = "leave_status", nullable = false)
     private Integer leaveStatus;
 
@@ -44,6 +48,7 @@ public class Leave {
     @Column(name = "permision_remarks", length = 50)
     private String permisionRemarks;
 
+    @Schema(description = "核可狀態:1-簽核中 2-同意 3-拒絕")
     @Column(name = "permision_status")
     private Integer permisionStatus;
 
@@ -54,12 +59,14 @@ public class Leave {
     @Column(name = "reason", nullable = false, length = 50)
     private String reason;
 
+    @Schema(description = "實際請假/給假 時數")
     @Column(name = "actual_leave_hours")
     private Integer actualLeaveHours;
 
     @Column(name = "image")
     private byte[] image;
 
+    @Schema(description = "用不到")
     @Column(name = "special_leave_hours")
     private Integer specialLeaveHours;
 
@@ -69,9 +76,11 @@ public class Leave {
     @Column(name = "update_time", nullable = false)
     private Date updateTime;
 
+    @Schema(description = "用不到")
     @Column(name = "validity_period_start")
     private Date validityPeriodStart;
 
+    @Schema(description = "當作用來記錄該假別的最後使用期限，可以獲取同假別的最新一筆紀錄")
     @Column(name = "validity_period_end")
     private Date validityPeriodEnd;
 
