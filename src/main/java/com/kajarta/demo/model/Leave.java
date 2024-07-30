@@ -41,7 +41,7 @@ public class Leave {
     @Column(name = "deputy_id")
     private Integer deputyId;
 
-    @Column(name = "team_leader_id", nullable = false)
+    @Column(name = "team_leader_id")
     private Integer teamLeaderId;
 
     @Nationalized
@@ -56,7 +56,7 @@ public class Leave {
     private Date auditTime;
 
     @Nationalized
-    @Column(name = "reason", nullable = false, length = 50)
+    @Column(name = "reason", length = 50)
     private String reason;
 
     @Schema(description = "實際請假/給假 時數")
@@ -76,7 +76,7 @@ public class Leave {
     @Column(name = "update_time", nullable = false)
     private Date updateTime;
 
-    @Schema(description = "用不到")
+    @Schema(description = "給假的開始時間")
     @Column(name = "validity_period_start")
     private Date validityPeriodStart;
 
