@@ -121,18 +121,23 @@ public class CustomerRecordVO {
 
     @Schema(description = "出廠年份")
     private BigDecimal productionYearAVG; // (出廠年份)
+    private Integer productionYearCount;
 
     @Schema(description = "里程")
     private BigDecimal milageAVG; // (里程)
+    private Integer milageCount;
 
     @Schema(description = "車評分")
     private BigDecimal scoreAVG; // (車評分)
+    private Integer scoreCount;
 
     @Schema(description = "馬力")
     private BigDecimal hpAVG; // (馬力)
+    private Integer hpCount;
 
     @Schema(description = "扭力")
     private BigDecimal torqueAVG; // (扭力)
+    private Integer torqueCount;
 
     @Schema(description = "No.1在意")
     private Integer no01Care;

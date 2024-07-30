@@ -74,13 +74,18 @@ public class CustomerRecord {
     private Integer count;// (點及商品次數)
 
     private BigDecimal productionYearAVG; // (出廠年份)
+    private Integer productionYearCount;
 
     private BigDecimal milageAVG; // (里程)
+    private Integer milageCount;
 
     private BigDecimal scoreAVG; // (車評分)
+    private Integer scoreCount;
 
     private BigDecimal hpAVG; // (馬力)
+    private Integer hpCount;
 
     private BigDecimal torqueAVG; // (扭力)
+    private Integer torqueCount;
 
 }
