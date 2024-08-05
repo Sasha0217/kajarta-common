@@ -1,6 +1,8 @@
 package com.kajarta.demo.utils;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -8,6 +10,7 @@ public class DateUtil {
 
     public static final String YYYY_MM_DD_HH_MM_SS = "yyyy-MM-dd HH:mm:ss";
     public static final String YYYY_MM_DD_HH_MM = "yyyy-MM-dd HH:mm";
+    public static final String YYYY_MM_DD_T_HH_MM = "yyyy-MM-dd'T'HH:mm";
 
     public static Date getDateDayEndOfYear(){
         Calendar calendar = Calendar.getInstance();
@@ -58,5 +61,25 @@ public class DateUtil {
         calendar.set(Calendar.MILLISECOND, 999);
         String lastDayOfYear = dateFormat.format(calendar.getTime());
         return lastDayOfYear;
+    }
+
+    public static String getDayStartOfYearIso(){
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(YYYY_MM_DD_T_HH_MM);
+
+        // 获取当前年份的第一天
+        LocalDateTime firstDayOfYear = LocalDateTime.of(LocalDateTime.now().getYear(), 1, 1, 0, 0);
+
+        // 格式化为字符串
+        return firstDayOfYear.format(dateFormatter);
+    }
+
+    public static String getDayEndOfYearIso(){
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(YYYY_MM_DD_T_HH_MM);
+
+        // 获取当前年份的最后一天
+        LocalDateTime lastDayOfYear = LocalDateTime.of(LocalDateTime.now().getYear(), 12, 31, 23, 59);
+
+        // 格式化为字符串
+        return lastDayOfYear.format(dateFormatter);
     }
 }
