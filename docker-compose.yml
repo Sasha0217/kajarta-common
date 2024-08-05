@@ -1,12 +1,14 @@
-services:
-  redis:
-    container_name: redis7
-    image: 'redis:7.0.14-alpine3.18'
-    ports:
-      - '6379:6379'
-    volumes:
-      - $PWD/docker-data/redis:/data
+version: '3.8'
 
+services:
+#  redis:
+#    container_name: redis7
+#    image: 'redis:7.0.14-alpine3.18'
+#    ports:
+#      - '6379:6379'
+#    volumes:
+#      - redis-data:/data
+#
 #  sql_server:
 #    container_name: sql_server
 #    image: mcr.microsoft.com/mssql/server
@@ -17,3 +19,19 @@ services:
 #      - '1433:1433'
 #    volumes:
 #      - sqlserver_data:/var/opt/mssql
+
+  mongodb:
+    container_name: mongo
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+#  redis-data:
+#    driver: local
+#  sqlserver_data:
+#    driver: local
+  mongo-data:
+    driver: local
